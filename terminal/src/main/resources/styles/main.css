@@ -590,6 +590,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
 
     .nameLabel {
     	-fx-font-family: 'Bauhaus';
+    	-fx-effect: dropshadow( one-pass-box , gold , 4 , 0.0 , 1 , 0 );
     	-fx-font-size: 34;
     }
 
@@ -622,6 +623,7 @@ turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen*/
     }
 
     .textFieldRight {
+        	-fx-effect: dropshadow( one-pass-box , darkred , 8 , 0.0 , 2 , 0 );
         -fx-background-color: style2-color;
         -fx-border-radius: 5 5 5 5;
         -fx-background-radius: 5 5 5 5;

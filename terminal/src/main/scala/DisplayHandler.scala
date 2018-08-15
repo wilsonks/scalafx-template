@@ -6,34 +6,52 @@ import javafx.collections.ObservableList
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.scene.control.Label
 import javafx.scene.input.{KeyCode, KeyEvent}
-import javafx.scene.layout.{ Region, VBox}
+import javafx.scene.layout.{Region, VBox}
 import javafx.scene.transform.Rotate
 import javafx.util.Duration
 import javafx.animation._
 import fs2.io.fx.{Display, Host, Menu}
+import javafx.scene.effect.{DropShadow, Glow}
+import javafx.scene.image.ImageView
+import javafx.scene.paint.Color
 import scalafxml.core.macros.sfxml
 
 @sfxml(additionalControls = List("customjavafx.scene.layout", "customjavafx.scene.control"))
 class DisplayHandler(
   val gameBox: VBox,
   val tableNumber: Label,
+  val totalCount: Label,
   val handBetMin: Label,
   val handBetMax: Label,
   val tieBetMin: Label,
   val tieBetMax: Label,
   val pairBetMin: Label,
   val pairBetMax: Label,
+  val smallLogo: ImageView,
   val logo: Region)(implicit display: Display, writer: Host[Menu, Unit], startMenu: Menu) {
 
 
   tableNumber.setText(startMenu.name)
   handBetMin.setText(startMenu.handBetMin)
   handBetMax.setText(startMenu.handBetMax)
-  tieBetMin.setText(startMenu.tieBetMin)
+  handBetMax.setText(startMenu.tieBetMin)
   tieBetMax.setText(startMenu.tieBetMax)
   pairBetMin.setText(startMenu.pairBetMin)
   pairBetMax.setText(startMenu.pairBetMax)
 
+val borderGlow = new DropShadow()
+  borderGlow.setOffsetX(0)
+  borderGlow.setOffsetY(0)
+  borderGlow.setColor(Color.ALICEBLUE)
+  borderGlow.setWidth(80)
+  borderGlow.setHeight(80)
+
+  val logoGlow = new Glow()
+  logoGlow.setLevel(.9)
+
+
+  logo.setEffect(logoGlow)
+  smallLogo.setEffect(logoGlow)
 
 
   val logoAnimation: RotateTransition = new RotateTransition(Duration.millis(5000), logo)
